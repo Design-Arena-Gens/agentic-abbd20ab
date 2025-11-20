@@ -1,0 +1,190 @@
+:root {
+  color-scheme: light;
+  font-family: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(180deg, #bff27f 0%, #e8ffbf 45%, #f7fdda 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.scene {
+  position: relative;
+  width: min(90vw, 960px);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 35px 80px rgba(68, 123, 21, 0.3);
+  background: linear-gradient(180deg, #e7ffad 0%, #ceff8a 65%, #9cd968 100%);
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.sun {
+  position: absolute;
+  top: 10%;
+  right: 12%;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff9c7 0%, #fede69 70%, #f5aa3b 100%);
+  filter: blur(0.5px);
+  animation: sunPulse 6s ease-in-out infinite;
+}
+
+.hill {
+  position: absolute;
+  bottom: -10%;
+  width: 60%;
+  height: 40%;
+  border-radius: 50%;
+}
+
+.hill-1 {
+  left: -10%;
+  background: radial-gradient(circle at 50% 30%, #77c23b 0%, #5ba028 70%, #3d7018 100%);
+}
+
+.hill-2 {
+  right: -20%;
+  background: radial-gradient(circle at 50% 30%, #83d143 0%, #5cb02d 70%, #3d7b18 100%);
+}
+
+.foliage {
+  position: absolute;
+  bottom: 0;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle at 50% 100%, rgba(0, 0, 0, 0.15) 0%, transparent 70%),
+    radial-gradient(circle at 50% 50%, #35721a 0%, #255111 60%, transparent 100%);
+  mask: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+}
+
+.foliage-left {
+  left: -40px;
+  transform: rotate(-8deg);
+}
+
+.foliage-right {
+  right: -60px;
+  transform: rotate(6deg);
+}
+
+.beetle-track {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.beetle-wrapper {
+  position: absolute;
+  width: 180px;
+  height: 120px;
+  animation: moveBeetle 15s linear infinite;
+}
+
+.beetle-shadow {
+  position: absolute;
+  top: calc(50% + 90px);
+  width: 180px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, transparent 70%);
+  filter: blur(6px);
+  animation: moveBeetle 15s linear infinite;
+}
+
+.beetle {
+  width: 100%;
+  height: 100%;
+  animation: beetleBob 2.2s ease-in-out infinite;
+}
+
+.beetle .wings {
+  animation: wingFlutter 1.8s ease-in-out infinite;
+  transform-origin: 80px 70px;
+}
+
+.text-layer {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  width: 70%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.info-text {
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+  font-weight: 600;
+  color: #1d2c05;
+  text-shadow: 0 4px 12px rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+@keyframes moveBeetle {
+  0% {
+    transform: translate(-60%, 0);
+  }
+  50% {
+    transform: translate(-5%, 0);
+  }
+  100% {
+    transform: translate(60%, 0);
+  }
+}
+
+@keyframes beetleBob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes wingFlutter {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes sunPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(249, 220, 104, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 60px rgba(255, 234, 145, 0.7);
+  }
+}
